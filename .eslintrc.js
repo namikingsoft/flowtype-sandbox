@@ -2,6 +2,9 @@ module.exports = {
   "parser": "babel-eslint",
   "extends": "standard",
   "plugins": [
-    "standard"
-  ]
+    "standard",
+  ],
+  "rules": {
+    "quotes": [2, "double"],
+  }
 };

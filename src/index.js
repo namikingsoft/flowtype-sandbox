@@ -4,9 +4,12 @@
  * non-nullable and maybe type
  */
 // error
-//const mustString = (isNull: boolean): string => isNull ? "String" : null
+// const mustString = (isNull: boolean): string => isNull ? "String" : null
 // success
 const maybeString = (isNull: boolean): ?string => isNull ? "String" : null
+console.log(
+  maybeString(false)
+)
 
 /**
  * third-party module
@@ -25,4 +28,5 @@ const lib = new MyLib()
 console.log(
   lib.method(1234)
 )
-//lib.method("1234") // error
+// error
+// lib.method("1234")
