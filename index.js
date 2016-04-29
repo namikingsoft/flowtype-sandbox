@@ -15,3 +15,14 @@ import {map} from "lodash"
 console.log(
   map([1, 2, 3], x => x * 2)
 )
+
+/**
+ * my module
+ *
+ */
+import MyLib from "./mylib"
+const lib = new MyLib()
+console.log(
+  lib.method(1234)
+)
+//lib.method("1234") // error
