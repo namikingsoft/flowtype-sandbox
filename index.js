@@ -9,9 +9,9 @@
 const maybeString = (isNull: boolean): ?string => isNull ? "String" : null
 
 /**
- * third-party library
+ * third-party module
  */
-import {map} from 'lodash'
+import {map} from "lodash"
 console.log(
   map([1, 2, 3], x => x * 2)
 )
