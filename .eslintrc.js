@@ -7,5 +7,15 @@ module.exports = {
   "rules": {
     "quotes": [2, "double"],
     "space-before-function-paren": 0,
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "moduleDirectory": [
+          "node_modules",
+          "src"
+        ]
+      }
+    }
   }
 };
