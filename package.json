@@ -7,7 +7,9 @@
     "flow": "flow",
     "lint": "eslint src",
     "start": "babel-node src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "mocha": "NODE_PATH=src mocha",
+    "test:watch": "npm run mocha -- --reporter min --watch",
+    "test": "npm run flow && npm run mocha"
   },
   "author": "",
   "license": "MIT",
