@@ -1,5 +1,7 @@
 // @flow
 
+import "bootstrap"
+
 /**
  * non-nullable and maybe type
  */
