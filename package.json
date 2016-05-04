@@ -5,11 +5,12 @@
   "main": "src/index.js",
   "scripts": {
     "flow": "flow",
+    "type": "npm run flow",
     "lint": "eslint src",
     "start": "babel-node src/index.js",
     "mocha": "NODE_PATH=src mocha",
     "test:watch": "npm run mocha -- --reporter min --watch",
-    "test": "npm run flow && npm run mocha"
+    "test": "npm run lint && npm run type && npm run mocha"
   },
   "author": "",
   "license": "MIT",
