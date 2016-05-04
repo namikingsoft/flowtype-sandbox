@@ -3,6 +3,11 @@
     "es2015"
   ],
   "plugins": [
-    "transform-flow-strip-types"
+    "babel-plugin-espower",
+    "syntax-trailing-function-commas",
+    "transform-async-to-generator",
+    "transform-flow-strip-types",
+    "transform-object-rest-spread",
+    "transform-runtime"
   ]
 }
