@@ -4,6 +4,7 @@
 [include]
 
 [libs]
-src/declares/
+src/declares
 
 [options]
+module.system.node.resolve_dirname=src
