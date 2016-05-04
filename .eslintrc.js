@@ -6,5 +6,6 @@ module.exports = {
   ],
   "rules": {
     "quotes": [2, "double"],
+    "space-before-function-paren": 0,
   }
 };
