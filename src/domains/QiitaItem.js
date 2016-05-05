@@ -1,5 +1,5 @@
 // @flow
-type Param = {
+export type Param = {
   title: string,
   body: string,
   user: string,
