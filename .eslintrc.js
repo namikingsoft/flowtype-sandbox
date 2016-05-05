@@ -2,7 +2,7 @@ module.exports = {
   "parser": "babel-eslint",
   "extends": "airbnb",
   "plugins": [
-    "react"
+    "react",
   ],
   "rules": {
     "semi": [2, "never"],
@@ -13,16 +13,16 @@ module.exports = {
     "browser": true,
     "es6": true,
     "mocha": true,
-    "node": true
+    "node": true,
   },
   "settings": {
     "import/resolver": {
       "node": {
         "moduleDirectory": [
           "node_modules",
-          "src"
+          "src",
         ]
       }
     }
-  }
+  },
 };
