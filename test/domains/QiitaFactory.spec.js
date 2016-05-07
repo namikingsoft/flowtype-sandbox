@@ -8,9 +8,6 @@ describe("QiitaFactory", () => {
     const item = QiitaFactory.createItem({
       title: "Title",
       body: "Body",
-      user: {
-        id: "User",
-      },
     })
     it("should be return new instance of QiitaItem", () => {
       assert(item instanceof QiitaItem)
@@ -19,7 +16,6 @@ describe("QiitaFactory", () => {
       assert.deepEqual(item.toObject(), {
         title: "Title",
         body: "Body",
-        user: "User",
       })
     })
   })

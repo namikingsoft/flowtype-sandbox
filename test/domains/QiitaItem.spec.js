@@ -1,16 +1,17 @@
 /* @flow */
 import assert from "power-assert"
 import QiitaItem from "domains/QiitaItem"
+import QiitaBody from "domains/QiitaBody"
 
 describe("QiitaItem", () => {
   let item: QiitaItem
+  let body: QiitaBody
+  let title: string
 
   beforeEach(() => {
-    item = new QiitaItem({
-      title: "Title",
-      body: "Body",
-      user: "User",
-    })
+    title = "Title"
+    body = new QiitaBody("Body")
+    item = new QiitaItem({ title, body })
   })
 
   describe("new", () => {
@@ -21,19 +22,13 @@ describe("QiitaItem", () => {
 
   describe("title", () => {
     it("should be return initial value", () => {
-      assert(item.title() === "Title")
+      assert(item.title() === title)
     })
   })
 
   describe("body", () => {
     it("should be return initial value", () => {
-      assert(item.body() === "Body")
-    })
-  })
-
-  describe("user", () => {
-    it("should be return initial value", () => {
-      assert(item.user() === "User")
+      assert(item.body() === body)
     })
   })
 
@@ -42,7 +37,6 @@ describe("QiitaItem", () => {
       assert.deepEqual(item.toObject(), {
         title: "Title",
         body: "Body",
-        user: "User",
       })
     })
   })
