@@ -1,8 +1,9 @@
 // @flow
+import QiitaBody from "domains/QiitaBody"
+
 export type Param = {
   title: string,
-  body: string,
-  user: string,
+  body: QiitaBody,
 }
 
 export default class QiitaItem {
@@ -16,19 +17,14 @@ export default class QiitaItem {
     return QiitaItem.privates.get(this).title
   }
 
-  body(): string {
+  body(): QiitaBody {
     return QiitaItem.privates.get(this).body
-  }
-
-  user(): string {
-    return QiitaItem.privates.get(this).user
   }
 
   toObject(): Object {
     return {
       title: this.title(),
-      body: this.body(),
-      user: this.user(),
+      body: this.body().valueOf(),
     }
   }
 }

@@ -19,12 +19,10 @@ describe("QiitaRepository", () => {
       {
         title: "Title1",
         body: "Body1",
-        user: { id: "User1" },
       },
       {
         title: "Title2",
         body: "Body2",
-        user: { id: "User2" },
       },
     ]
     nock("https://feedforce.qiita.com")
@@ -52,12 +50,10 @@ describe("QiitaRepository", () => {
         assert.deepEqual(posts[0].toObject(), {
           title: "Title1",
           body: "Body1",
-          user: "User1",
         })
         assert.deepEqual(posts[1].toObject(), {
           title: "Title2",
           body: "Body2",
-          user: "User2",
         })
       } catch (err) {
         assert.fail()
