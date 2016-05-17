@@ -1,15 +1,18 @@
 // @flow
 
-export default class SingleValue<T> {
-  static privates: WeakMap<SingleValue, T> = new WeakMap();
+class PrivateSingleValue<T> {
+  _value: T;
 
   constructor(value: T) {
-    SingleValue.privates.set(this, value)
+    this._value = value
   }
 
   valueOf(): T {
-    return SingleValue.privates.get(this)
+    return this._value
   }
+}
+
+export default class SingleValue<T> extends PrivateSingleValue<T> {
 
   toString(): string {
     return String(this.valueOf())

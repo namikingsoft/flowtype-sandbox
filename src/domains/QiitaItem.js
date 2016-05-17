@@ -1,25 +1,28 @@
 // @flow
 import QiitaBody from "domains/QiitaBody"
 
-export type Param = {
+type Param = {
   title: string,
   body: QiitaBody,
 }
 
-export default class QiitaItem {
-  static privates: WeakMap<QiitaItem, Param> = new WeakMap();
+class PrivateQiitaItem {
+  _param: Param;
 
   constructor(param: Param) {
-    QiitaItem.privates.set(this, param)
+    this._param = param
   }
 
   title(): string {
-    return QiitaItem.privates.get(this).title
+    return this._param.title
   }
 
   body(): QiitaBody {
-    return QiitaItem.privates.get(this).body
+    return this._param.body
   }
+}
+
+export default class QiitaItem extends PrivateQiitaItem {
 
   toObject(): Object {
     return {
