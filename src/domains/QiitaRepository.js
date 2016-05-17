@@ -7,12 +7,19 @@ import type { ItemObject } from "types/QiitaType"
 
 const API_BASE_URI = "https://feedforce.qiita.com/api/v2"
 
-export default class QiitaRepository {
-  accessToken: string;
+class PrivateQiitaRepository {
+  _accessToken: string;
 
   constructor(accessToken: string) {
-    this.accessToken = accessToken
+    this._accessToken = accessToken
   }
+
+  accessToken(): string {
+    return this._accessToken
+  }
+}
+
+export default class QiitaRepository extends PrivateQiitaRepository {
 
   async search(query: string): Promise<Array<QiitaItem>> {
     return (await request({
@@ -31,7 +38,7 @@ export default class QiitaRepository {
   auth(): AuthHeader {
     return {
       headers: {
-        Authorization: `Bearer ${this.accessToken}`,
+        Authorization: `Bearer ${this.accessToken()}`,
       },
     }
   }
