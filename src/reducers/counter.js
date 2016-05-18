@@ -1,18 +1,25 @@
 // @flow
-import { handleActions } from "redux-actions"
-import { EXECUTE_INCREMENT } from "actions/counter"
+import { EXECUTE_INCREMENT, RESET } from "actions/counter"
+import type { Action } from "types/Action"
+import type { CounterState, CounterPayload } from "types/Counter"
 
-export interface Counter {
-  num: number;
-}
-
-const initialState = {
+export const initialState = {
   num: 0,
 }
 
-export default handleActions({
-  [EXECUTE_INCREMENT]: (state, { payload }) => ({
-    ...state,
-    num: state.num + payload,
-  }),
-}, initialState)
+export default function counter(
+  state: CounterState = initialState,
+  action: Action<CounterPayload>,
+): CounterState {
+  switch (action.type) {
+    case EXECUTE_INCREMENT: {
+      return { ...state, num: state.num + action.payload.num }
+    }
+    case RESET: {
+      return { ...initialState }
+    }
+    default: {
+      return state
+    }
+  }
+}

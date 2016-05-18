@@ -4,13 +4,14 @@ import React from "react"
 import ReactDOM from "react-dom"
 import { Provider } from "react-redux"
 import { createStore, applyMiddleware } from "redux"
-import { Router, Route, hashHistory } from "react-router"
+import { Router, Route, IndexRoute, hashHistory } from "react-router"
 import createSagaMiddleware from "redux-saga"
 import reducer from "reducers"
 import saga from "sagas"
-import Layout from "containers/Layout"
-import Hello from "pages/Hello"
-import NotFound from "pages/NotFound"
+import LayoutContainer from "containers/LayoutContainer"
+import TopPage from "pages/TopPage"
+import HelloPage from "pages/HelloPage"
+import CounterPage from "pages/CounterPage"
 
 const sagaMiddleware = createSagaMiddleware()
 const store = createStore(reducer, applyMiddleware(sagaMiddleware))
@@ -19,9 +20,10 @@ sagaMiddleware.run(saga)
 ReactDOM.render(
   <Provider store={store}>
     <Router history={hashHistory}>
-      <Route path="/" component={Layout}>
-        <Route path="hello/:name" component={Hello} />
-        <Route path="*" component={NotFound} />
+      <Route path="/" component={LayoutContainer}>
+        <IndexRoute component={TopPage} />
+        <Route path="Hello/:name" component={HelloPage} />
+        <Route path="Counter" component={CounterPage} />
       </Route>
     </Router>
   </Provider>,

@@ -1,7 +1,7 @@
 // @flow
 import React, { Component } from "react"
 
-export default class Layout extends Component {
+export default class LayoutContainer extends Component {
   props: {
     children?: Array<Component>,
   };
