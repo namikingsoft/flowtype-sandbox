@@ -1,6 +1,6 @@
 // @flow
 import { EXECUTE_INCREMENT, RESET } from "actions/counter"
-import type { Action } from "types/Action"
+import type { PayloadAction as PAction } from "types/Action"
 import type { CounterState, CounterPayload } from "types/Counter"
 
 export const initialState = {
@@ -9,11 +9,13 @@ export const initialState = {
 
 export default function counter(
   state: CounterState = initialState,
-  action: Action<CounterPayload>,
+  action: PAction<CounterPayload>,
 ): CounterState {
   switch (action.type) {
     case EXECUTE_INCREMENT: {
-      return { ...state, num: state.num + action.payload.num }
+      const increment = action.payload ? (action.payload.num || 0) : 0
+      const num = state.num + increment
+      return { ...state, num }
     }
     case RESET: {
       return { ...initialState }

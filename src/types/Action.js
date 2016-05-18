@@ -1,7 +1,10 @@
 // @flow
-export interface Action<P> {
+export interface Action {
   type: string;
-  payload?: P;
   meta?: any;
   error?: Error;
+}
+
+export interface PayloadAction<T> extends Action {
+  payload: T;
 }

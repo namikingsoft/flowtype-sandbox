@@ -1,40 +1,55 @@
 // @flow
 import React, { Component } from "react"
 import { connect } from "react-redux"
-import { actions as counterActions } from "actions/counter"
+import { actions } from "actions/counter"
 import Button from "components/Button"
 import type { CounterState } from "types/Counter"
+import type { Action } from "types/Action"
 
 class CounterPage extends Component {
   props: {
     counter: CounterState,
-    // actions
-    requestIncrement: (num: number) => any,
-    reset: () => any,
+    dispatch: (action: Action) => any,
   };
 
   handlePressIncrement() {
-    const incrementNum = parseInt(this.refs.count.value || 1, 10)
-    this.props.requestIncrement(incrementNum)
+    const { dispatch } = this.props
+    const num = parseInt(this.refs.count.value || 1, 10)
+    dispatch(actions.executeIncrement({ num }))
+  }
+
+  handlePressIncrementDelay() {
+    const { dispatch } = this.props
+    const num = parseInt(this.refs.count.value || 1, 10)
+    dispatch(actions.requestIncrement({ num }))
   }
 
   handlePressReset() {
-    this.props.reset()
+    const { dispatch } = this.props
+    dispatch(actions.reset())
   }
 
   render() {
     const { counter: { num } } = this.props
     return (
       <div>
-        <Button onClick={e => this.handlePressIncrement(e)}>
-          Increment: current count is {num}.
-        </Button>
-        <Button onClick={e => this.handlePressReset(e)}>
-          Reset
-        </Button>
+        <p>
+          Current count is {num}.
+        </p>
         <p>
           <label>Increment Count: </label>
           <input type="text" ref="count" />
+        </p>
+        <p>
+          <Button onClick={e => this.handlePressIncrement(e)}>
+            Increment
+          </Button>
+          <Button onClick={e => this.handlePressIncrementDelay(e)}>
+            Increment Delay
+          </Button>
+          <Button onClick={e => this.handlePressReset(e)}>
+            Reset
+          </Button>
         </p>
       </div>
     )
@@ -43,5 +58,5 @@ class CounterPage extends Component {
 
 export default connect(
   ({ counter }) => ({ counter }),
-  { ...counterActions },
+  dispatch => ({ dispatch }),
 )(CounterPage)
