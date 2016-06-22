@@ -1,4 +1,4 @@
 import DotENV from "dotenv"
 import "babel-polyfill"
 
-DotENV.config()
+DotENV.config({ silent: true })
