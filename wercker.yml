@@ -3,7 +3,7 @@
 # If you want Nodesource's container you would reference nodesource/node
 # Read more about containers on our dev center
 # http://devcenter.wercker.com/docs/containers/index.html
-box: node:6.2.2-slim
+box: node:6.2.2
 # This is the build pipeline. Pipelines are the core of wercker
 # Read more about pipelines on our dev center
 # http://devcenter.wercker.com/docs/pipelines/index.html
@@ -22,6 +22,11 @@ build:
   # Read more about steps on our dev center:
   # http://devcenter.wercker.com/docs/steps/index.html
   steps:
+    - script:
+        name: install libelf1
+        code: |
+          apt-get update --yes
+          apt-get install --yes libelf1
     # A step that executes `npm install` command
     - npm-install
     # A step that executes `npm test` command
